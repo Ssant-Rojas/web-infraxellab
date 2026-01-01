@@ -19,7 +19,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (key: string) => {
   try {
     const res = await fetch(
-      import.meta.env.VITE_API_URL + "/admin/messages",
+      import.meta.env.VITE_API_URL + "api/admin/messages",
       {
         headers: {
           "x-admin-key": key,
