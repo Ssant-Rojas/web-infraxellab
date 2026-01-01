@@ -19,7 +19,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (key: string) => {
   try {
     const res = await fetch(
-      import.meta.env.VITE_API_URL + "/api/admin/messages",
+      import.meta.env.VITE_API_URL + "/admin/messages",
       {
         headers: {
           "x-admin-key": key,
@@ -31,6 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw new Error("Invalid admin key")
     }
 
+    sessionStorage.setItem("adminKey", key)
     setIsAuthenticated(true)
     return true
   } catch {
@@ -38,7 +39,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsAuthenticated(false)
     return false
   }
-  }
+}
+
 
 
   const logout = () => {
